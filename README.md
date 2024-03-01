@@ -1,7 +1,7 @@
 #Tic Tac Toe
 Welcome to the classic game of Tic Tac Toe! This Ruby implementation allows two players to take turns making their moves. The game continues until one player wins or the board is filled, resulting in a tie.
 
-Live preview : https://replit.com/@elayachi99h/Tic-Tac-Toe-1
+Live preview : https://replit.com/@elayachi99h/Tic-Tac-Toe-1?v=1
 
 How to Play
 The game starts with Player 1 using "X" and Player 2 using "O."
