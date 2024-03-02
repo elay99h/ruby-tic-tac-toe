@@ -30,10 +30,6 @@ attr_accessor :player1, :player2, :current_player, :winner
     [0, 3, 6], [1, 4, 7], [2, 5, 8], # Columns
     [0, 4, 8], [2, 4, 6]             # Diagonals
   ]
-
-  def get_player_input
-    input = gets.chomp    
-  end
   
   # Converts user input to an array index.
   def input_to_index(input)
@@ -93,7 +89,6 @@ attr_accessor :player1, :player2, :current_player, :winner
     return false
   end
 
-
   def turn
     puts @dialog.turn_of(current_player)
     puts @dialog.enter_input
@@ -126,9 +121,6 @@ attr_accessor :player1, :player2, :current_player, :winner
     draw_board
     result
   end
-
-
-
 end
 
 tictactoe = TicTacToe.new
