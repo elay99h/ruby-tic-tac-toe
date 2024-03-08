@@ -4,7 +4,7 @@ require_relative "player"
 require_relative "dialog"
 
 class TicTacToe
-attr_accessor :player1, :player2, :current_player, :winner
+  attr_accessor :player1, :player2, :current_player, :winner
 
   def initialize
     @board = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
@@ -31,10 +31,6 @@ attr_accessor :player1, :player2, :current_player, :winner
     [0, 4, 8], [2, 4, 6]             # Diagonals
   ]
 
-  def get_player_input
-    input = gets.chomp    
-  end
-  
   # Converts user input to an array index.
   def input_to_index(input)
     input.to_i - 1
@@ -45,20 +41,20 @@ attr_accessor :player1, :player2, :current_player, :winner
     @board[position] = player.token
   end
 
-  # Validates if a move is valid 
-  # and if the position is not already taken. 
+  # Validates if a move is valid
+  # and if the position is not already taken.
   def valid_move?(position)
     on_board?(position) && !position_taken?(position)
   end
-  
+
   # Checks if the move is on the board bounds
   def on_board?(position)
-      position.between?(0, 8)
+    position.between?(0, 8)
   end
-  
+
   # Checks if a specified position on the board is taken by "X" or "O".
   def position_taken?(position)
-  @board[position] == "X" || @board[position] == "O" 
+    @board[position] == "X" || @board[position] == "O"
   end
 
   # Switches the turn between Player 1 and Player 2 based on the number of moves made.
@@ -86,49 +82,46 @@ attr_accessor :player1, :player2, :current_player, :winner
     WINNING_COMBOS.each do |win_combo| # [0, 1, 2]
       index1, index2, index3 = win_combo
 
-      if @board[index1] == @board[index2] &&  @board[index2] == @board[index3]
+      if @board[index1] == @board[index2] && @board[index2] == @board[index3]
         return @winner = @board[win_combo[0]]
       end
     end
     return false
   end
 
-
   def turn
     puts @dialog.turn_of(current_player)
     puts @dialog.enter_input
     position = input_to_index(gets.chomp)
-    if valid_move?(position) 
+    if valid_move?(position)
       move(position)
       switch_turn
-    else 
+    else
       puts @dialog.unvalid_move
-      turn 
+      turn
     end
   end
 
   def result
-    if has_winner? || has_winner? && board_full?
+    if has_winner?
       puts @dialog.winner_is(@winner)
     elsif !has_winner? && board_full?
       puts @dialog.its_tie
     end
   end
 
-  def play 
+  def play
     puts @dialog.welcome_to
-    9.times do 
-      while !has_winner?
+    9.times do
+      while !has_winner? && !board_full?
         draw_board
         turn
       end
     end
     draw_board
     result
+    puts @dialog.made_with_love
   end
-
-
-
 end
 
 tictactoe = TicTacToe.new
