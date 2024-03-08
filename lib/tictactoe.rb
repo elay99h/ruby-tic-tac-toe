@@ -30,15 +30,7 @@ class TicTacToe
     [0, 3, 6], [1, 4, 7], [2, 5, 8], # Columns
     [0, 4, 8], [2, 4, 6]             # Diagonals
   ]
-<<<<<<< HEAD
 
-=======
-  
->>>>>>> 3f499d2d97057676e21fdb2e96b5e6ee2fa52af2
-  # Converts user input to an array index.
-  def input_to_index(input)
-    input.to_i - 1
-  end
 
   # Places a player's token at the specified position on the board.
   def move(position, player = @current_player)
