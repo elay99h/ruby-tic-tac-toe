@@ -30,7 +30,10 @@ class TicTacToe
     [0, 3, 6], [1, 4, 7], [2, 5, 8], # Columns
     [0, 4, 8], [2, 4, 6]             # Diagonals
   ]
-
+  
+  def input_to_index(input)
+    input.to_i - 1
+  end
 
   # Places a player's token at the specified position on the board.
   def move(position, player = @current_player)
